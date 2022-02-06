@@ -8,7 +8,7 @@
 </head>
 <body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/110/three.js"></script>
+    <script src="https://threejs.org/build/three.js"></script>
 
     <script>
         var scene = new THREE.Scene();
@@ -22,6 +22,15 @@
         renderer.setSize(windows.innerWidth, windows.innerHeight);
         document.body.appendChild(renderer.domElement);
 
+
+
+        //add geometry
+        var geometry = new THREE.BoxGeometry();
+        var material = new THREE.MeshBasicMaterial({color: 0x00ff00});
+        var cube = new THREE.Mesh(geometry, material)
+
+        scene.Add(Cube);
+        camera.position.z = 5;
         renderer.render(scene, camera);
     </script>
     
