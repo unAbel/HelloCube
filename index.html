@@ -8,10 +8,11 @@
 </head>
 <body>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.js"></script>
 
     <script>
         var scene = new THREE.Scene();
+        scene.background = new THREE.Color(0x2a3b4c);
         var camera = new THREE.PerspectiveCamera(
             75,
             windows.innerWidt/windows.innerHeight
