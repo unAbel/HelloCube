@@ -8,7 +8,16 @@
 </head>
 <body>
 
+    
     <script src="https://threejs.org/build/three.js"></script>
+
+    <script type="module">
+        //import * as THREE from "./three.module.js";
+        //import {OrbitControls} from './OrbitControls.js';
+
+        import * as THREE from "https://github.com/mrdoob/three.js/blob/dev/build/three.module.js";
+        import {OrbitControls} from './OrbitControls.js';
+    </script>
 
     <script>
         var scene = new THREE.Scene();
@@ -16,13 +25,25 @@
 
         //imagen de fondo
         var loader = new THREE.TextureLoader();
-        loader.load("./background.jpg", function(imagen){
+        loader.load("data:image/jpeg;base64,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", function(imagen){
             scene.background = imagen;
         });
+
+
         var camera = new THREE.PerspectiveCamera(
             75,
             window.innerWidth/window.innerHeight
         );
+
+
+        var cameraDos = new THREE.PerspectiveCamera(
+            75,
+            window.innerWidth/window.innerHeight,
+            0.1,
+            5
+        );
+        var helper = new THREE.CameraHelper(cameraDos);
+        scene.add(helper);
 
         var renderer = new THREE.WebGLRenderer();
         renderer.setSize(window.innerWidth, window.innerHeight);
@@ -38,11 +59,20 @@
         scene.add(cube);
         camera.position.z = 5;
 
+
+        var controls = new OrbitControls(camera, renderer.domElement);
+        var i = 0;
         var animate = function(){
             //ciclo repetititvo
             requestAnimationFrame(animate);
             cube.rotation.x += 0.01;
             cube.rotation.y += 0.01;
+
+            ///camera.lookAt(cameraDos.position);
+            ///camera.position.x = Math.cos(i)*30;
+            ///camera.position.z = Math.sin(i)*30;
+            //i += 0.01;
+
 
             //para actualizar en cada ciclo
             renderer.render(scene, camera);
